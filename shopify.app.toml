@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "f21f270f349a24ddc85f462b0693080e"
+name = "custom-discounts-app"
+handle = "custom-discounts-app-2"
+application_url = "https://ons-treasures-aye-illustrated.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "welcome-this-is.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_discounts"
+
+[auth]
+redirect_urls = [
+  "https://ons-treasures-aye-illustrated.trycloudflare.com/auth/callback",
+  "https://ons-treasures-aye-illustrated.trycloudflare.com/auth/shopify/callback",
+  "https://ons-treasures-aye-illustrated.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
